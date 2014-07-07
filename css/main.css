@@ -1,0 +1,33 @@
+body{
+	/*background: #F3F3FA;*/
+}
+.wizard > .content{
+	/*background: white;*/
+}
+div#truck-blocks div{
+	height: 70px;	
+	margin-bottom: 20px;
+}
+
+div#truck-blocks img{
+	padding: 10px;
+	margin:0;
+	list-style: none;
+	border: 1px solid #CCC;
+	background: white;
+	border-radius: 4px;
+	opacity: 0.75;
+	cursor: pointer;
+	/*width: 20%;*/
+	/*padding: 15px;*/	
+}
+div#truck-blocks img:hover{
+	opacity: 1;
+	border-color: #BBB;
+}
+div#truck-blocks div.active img{
+	border-color: #2184be;
+}
+li.active{
+	font-weight: bold;
+}
