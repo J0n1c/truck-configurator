@@ -1,5 +1,9 @@
+
 $(function ()
 {
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Обязательное поле"
+    });
     $("#lefthand-nav").affix({
         offset: {
             top: function ()
@@ -27,19 +31,23 @@ $(function ()
     $("#form-2").validate({
         errorPlacement: errorPlacement,
         rules: {
-            confirm: {
-                equalTo: "#password"
-            }
-        }
+            typeId: {
+                required: true,
+                min: 1,
+                minlength: 5
+            }        
+        },
+        messages: {
+            typeId: "Пожалуста, выберете тип грузовика"
+        }        
     });
     $("#wizard").steps({
         headerTag: "h3",
         bodyTag: "section",
         transitionEffect: "slideLeft",
         onStepChanging: function (event, currentIndex, newIndex)
-        {
-            $("#form-2").validate().settings.ignore = ":disabled,:hidden";
-            return $("#form-2").valid();
+        {            
+            return parseInt( $("#iTypeId").val() ) > 0;
         },
         onFinishing: function (event, currentIndex)
         {
@@ -48,7 +56,7 @@ $(function ()
         },
         onFinished: function (event, currentIndex)
         {
-            alert("Submitted!");
+            alert("Заказ сделан, отменить его невозможно!");
         },
         labels: {
             cancel: "Отменить",
@@ -62,3 +70,4 @@ $(function ()
 
     });
 });
+

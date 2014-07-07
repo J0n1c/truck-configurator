@@ -3,26 +3,48 @@
 	t_conf.controller('TConfiguratorController', function(){   
 		this.truck = first_test_truck;
 		this.truck_types = truck_types;
+		this.truck_series = truck_series;
 
-		this.tab = 0;
-		this.selectTab = function(setTab) {
-			this.tab = setTab;
-		};
-		this.isSelected = function(checkTab){
-			return this.tab === checkTab;
-		};
+		this.typeId=0;
+		this.seriaId=0;
 
-		// this.typeId=0;
-		// this.selectType = function(inTypeId){
-		// 	this.typeId=inTypeId;
-		// };
-
-		// this.isSelected = function(checkedTypeId){
-		// 	return this.typeId === checkedTypeId;
-		// };
+		// --- Type ---
+		this.isSelected = function(typeId){
+			return this.typeId===typeId;
+		}
+		this.selectType = function(inTypeId){
+			this.typeId=inTypeId;
+			$("#iTypeId").val(inTypeId);
+		}
+		this.selectedType = function(){
+			return truck_types[this.typeId-1];
+		}
+		// --- SERIA ---
+		this.isSelectedSeria = function(seriaId){
+			return this.seriaId===seriaId;
+		}
+		this.selectSeria = function(inSeriaId){
+			this.seriaId=inSeriaId;
+		}
 	});
 
-	
+	var truck_series = [
+		{
+			id:1,
+			name:"ELF",
+			imageUrl:"1.jpg"
+		},
+		{
+			id:2,
+			name:"Forward",
+			imageUrl:"2.png"
+		},
+		{
+			id:3,
+			name:"GIGA",
+			imageUrl:"3.jpg"
+		}
+	];
 
 
 
