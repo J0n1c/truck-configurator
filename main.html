@@ -34,8 +34,9 @@
 
                     <section>
                         <div id="truck-blocks">
-                            <div ng-repeat="truck_type in tconfigurator.truck_types" class="col-md-2" ng-class="{active : tconfigurator.isSelected(truck_type.id)}">
+                            <div ng-repeat="truck_type in tconfigurator.truck_types" class="col-md-3" ng-class="{active : tconfigurator.isSelected(truck_type.id)}">
                                 <img class="no-select" ng-src="img/truck_types/{{truck_type.imageUrl}}"  ng-click="tconfigurator.selectType(truck_type.id)"  />
+                                <div>{{truck_type.name}}</div>
                             </div>
                             <input id="iTypeId" name="iTypeId" type="hidden"></input>
                         </div>
@@ -47,7 +48,7 @@
                         <div ng-repeat="seria in tconfigurator.truck_series" class="col-md-4 truck-seria" ng-class="{active: tconfigurator.isSelectedSeria(seria.id)}">
                             <div>
                                 <img class="no-select" ng-src="img/truck_series/{{seria.imageUrl}}" ng-click="tconfigurator.selectSeria(seria.id)"/>
-                            </div>                            
+                            </div>
                         </div>
                     </section>
 

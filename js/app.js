@@ -1,6 +1,6 @@
 (function(){ 
 	var t_conf = angular.module('trucks_configurator', [])
-	t_conf.controller('TConfiguratorController', function(){   
+	t_conf.controller('TConfiguratorController', function(){ 
 		this.truck = first_test_truck;
 		this.truck_types = truck_types;
 		this.truck_series = truck_series;

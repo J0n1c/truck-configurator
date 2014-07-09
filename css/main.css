@@ -4,9 +4,10 @@ body{
 .wizard > .content{
 	/*background: white;*/
 }
-div#truck-blocks div{
-	height: 70px;	
+div#truck-blocks > div{
+	height: 85px;
 	margin-bottom: 20px;
+    text-align: center;
 }
 
 div#truck-blocks img{
@@ -25,8 +26,12 @@ div#truck-blocks img:hover{
 	opacity: 1;
 	border-color: #BBB;
 }
-div#truck-blocks div.active img{
+div#truck-blocks div.active img,.truck-seria.active div{
 	border-color: #2184be;
+    -moz-box-shadow:    0px 0px 5px 0px #2184be;
+    -webkit-box-shadow: 0px 0px 5px 0px #2184be;
+    box-shadow:         0px 0px 5px 0px #2184be;
+    opacity: 1;
 }
 li.active{
 	font-weight: bold;
@@ -47,12 +52,6 @@ li.active{
 	height: 210px;
 	background: white;
 	border: 1px solid #555;	
-}
-.truck-seria.active div{
-	border-color: #2184be;
-  	-moz-box-shadow:    0px 0px 5px 0px #2184be;
-  	-webkit-box-shadow: 0px 0px 5px 0px #2184be;
-  	box-shadow:         0px 0px 5px 0px #2184be;
 }
 .no-select{
     -webkit-touch-callout: none;
