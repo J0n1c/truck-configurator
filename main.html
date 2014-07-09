@@ -35,8 +35,8 @@
                     <section>
                         <div id="truck-blocks">
                             <div ng-repeat="truck_type in tconfigurator.truck_types" class="col-md-3" ng-class="{active : tconfigurator.isSelected(truck_type.id)}">
-                                <img class="no-select" ng-src="img/truck_types/{{truck_type.imageUrl}}"  ng-click="tconfigurator.selectType(truck_type.id)"  />
-                                <div>{{truck_type.name}}</div>
+                                <img id="truck-img-{{truck-type.id}}" class="no-select" ng-src="img/truck_types/{{truck_type.imageUrl}}"  ng-click="tconfigurator.selectType(truck_type.id)"  />
+                                <label for="truck-img-{{truck-type.id}}">{{truck_type.name}}</label>
                             </div>
                             <input id="iTypeId" name="iTypeId" type="hidden"></input>
                         </div>
@@ -46,33 +46,67 @@
                     <section>
                         <h2>Вы выбрали: {{tconfigurator.selectedType().name}}</h2>
                         <div ng-repeat="seria in tconfigurator.truck_series" class="col-md-4 truck-seria" ng-class="{active: tconfigurator.isSelectedSeria(seria.id)}">
-                            <div>
-                                <img class="no-select" ng-src="img/truck_series/{{seria.imageUrl}}" ng-click="tconfigurator.selectSeria(seria.id)"/>
+                            <div  ng-click="tconfigurator.selectSeria(seria.id)">
+                                <img class="no-select" ng-src="img/truck_series/{{seria.imageUrl}}"/>
+                            </div>
+                            <label>{{seria.name}}</label>
+                            <div ng-show="tconfigurator.isSelectedSeria(seria.id)">
+                                <div ng-repeat="seria_variant in seria.variants" class="radio">
+                                    <label>
+                                        <input type="radio"
+                                               ng-model="tconfigurator.sv_mdl"
+                                               ng-value="seria_variant.name"
+                                               id="{{seria_variant.id}}"
+                                               name="addition_variants_{{seria.id}}">
+                                        {{seria_variant.name}}
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </section>
 
                     <h3>Опции</h3>
                     <section>
-                        <h2>{{tconfigurator.truck.subtype}}</h2>
+                        <!--<h2>{{tconfigurator.truck.subtype}}</h2>-->
+                        <!--<div ng-repeat="addition2 in tconfigurator.truck.additions">-->
+                            <!--<div ng-bind="addition2.av_mdl"></div>-->
+                        <!--</div>-->
+
                         <div ng-repeat="addition in tconfigurator.truck.additions">
                             <h3>{{addition.name}}</h3>
-                            <div ng-repeat="addition_variant in addition.addition_variants" class="radio">
-                                <label>
-                                    <input type="radio"
-                                           ng-model="av_mdl"
-                                           ng-value="addition_variant.name"
-                                           id="{{addition_variant.id}}"
-                                           name="addition_variants_{{addition.id}}">
-                                    {{addition_variant.name}}
-                                </label>
-                            </div>
+                                <div class="form-inline">
+                                    <label  ng-repeat="addition_variant in addition.addition_variants" class="control-label {{addition.type}}-inline">
+                                        <input type="{{addition.type}}"
+                                               ng-model="addition.av_mdl"
+                                               ng-value="addition_variant.name"
+                                               id="addition_{{addition.id}}_variant_{{addition_variant.id}}"
+                                               name="addition_variants_{{addition.id}}[]">
+                                        {{addition_variant.name}}
+                                    </label>
+                                </div>
                         </div>
                     </section>
 
                     <h3>Отправить</h3>
                     <section>
-                        <div class="col-md-4 col-md-offset-4">
+
+                        <div class="col-md-6">
+                            <h4>Вы выбрали:</h4>
+                            <ul>
+                                <li>Тип грузовика: {{tconfigurator.selectedType().name}}</li>
+                                <li>Шасси: {{tconfigurator.selectedSeria.name}}<span ng-bind="tconfigurator.sv_mdl"></span></li>
+                                <li ng-repeat="addition2 in tconfigurator.truck.additions">
+                                    {{addition2.name}}: <span  ng-bind="addition2.av_mdl"></span>
+                                </li>
+
+                            </ul>
+                            <!--<div></div>-->
+                            <!--<div ng-bind="tconfigurator.sv_mdl"></div>-->
+                            <!--<div ng-repeat="addition2 in tconfigurator.truck.additions">-->
+                                <!--<div ng-bind="addition2.av_mdl"></div>-->
+                            <!--</div>-->
+                        </div>
+                        <div class="col-md-5 col-md-offset-1">
                             <div class="form-group">
                                 <label for="userName">Имя *</label>
                                 <input type="text" class="required form-control" name="userName" id="userName" />                            

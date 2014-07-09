@@ -1,5 +1,5 @@
 (function(){ 
-	var t_conf = angular.module('trucks_configurator', [])
+	var t_conf = angular.module('trucks_configurator', []);
 	t_conf.controller('TConfiguratorController', function(){ 
 		this.truck = first_test_truck;
 		this.truck_types = truck_types;
@@ -24,6 +24,7 @@
 			return this.seriaId===seriaId;
 		}
 		this.selectSeria = function(inSeriaId){
+            this.sv_mdl = null;
 			this.seriaId=inSeriaId;
 		}
 	});
@@ -32,17 +33,48 @@
 		{
 			id:1,
 			name:"ELF",
-			imageUrl:"1.jpg"
+			imageUrl:"1.jpg",
+            variants: [
+                {
+                    id: 1,
+                    name: "ELF 3.5 S (NLR85A) Полная масса 3.5 т"
+                },
+                {
+                    id: 2,
+                    name: "ELF 3.5 (NMR85H) Полная масса 3.5 т"
+                },
+                {
+                    id: 3,
+                    name: "ELF 5.2 (NMR85H) Полная масса 5.2 т"
+                },
+                {
+                    id: 4,
+                    name: "ELF 7.5 (NPR75) Полная масса 7.5 т"
+                },
+                {
+                    id: 5,
+                    name: "ELF 9.5 (NQR90) Полная масса 9.5 т"
+                }
+            ]
 		},
 		{
 			id:2,
 			name:"Forward",
-			imageUrl:"2.png"
+			imageUrl:"2.png",
+            variants: [
+                {
+                    name: "FORWARD 12.0 (FSR90) Полная масса 12 т"
+                },
+                {
+                    name: "FORWARD 18.0 (FVR34) Полная масса 18 т"
+                }
+            ]
 		},
 		{
 			id:3,
 			name:"GIGA",
-			imageUrl:"3.jpg"
+			imageUrl:"3.jpg",
+            variants: []
 		}
 	];
 
@@ -71,11 +103,12 @@
 			{
 				id: 1,
 				name: "Автономный отопитель",
-				addition_variants: 
+                type: "radio",
+				addition_variants:
 					[
 						{
 							id: 1,
-							name: "WEBASTO"	
+							name: "WEBASTO"
 						},
 						{
 							id: 2,
@@ -86,6 +119,7 @@
 			{
 				id: 2,
 				name: "Гидроборт",
+                type: "radio",
 				addition_variants: [
 					{
 						id: 3,
@@ -108,7 +142,31 @@
 						name: "Другое"
 					}
 				]
-			}					
+			},
+            {
+                id: 3,
+                name: "Доп. опции",
+                type: "checkbox",
+                addition_variants:
+                    [
+                        {
+                            id: 1,
+                            name: "Кондиционер"
+                        },
+                        {
+                            id: 2,
+                            name: "Магнитола"
+                        },
+                        {
+                            id: 3,
+                            name: "Сигнализация"
+                        },
+                        {
+                            id: 4,
+                            name: "АБС"
+                        }
+                    ]
+            }
 		]
 	};
 
