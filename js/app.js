@@ -74,7 +74,18 @@
 			id:3,
 			name:"GIGA",
 			imageUrl:"3.jpg",
-            variants: []
+            variants: [
+                {
+                    name: "ISUZU GIGA 6×4 Шасси, полная масса 33 т"
+                },
+                {
+                    name: "ISUZU GIGA 4×2 Тягач, полная масса 60 т"
+                },
+                {
+                    name: "ISUZU GIGA 6×4 Тягач, полная масса 60 т"
+                }
+
+            ]
 		}
 	];
 
