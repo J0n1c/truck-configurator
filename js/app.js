@@ -1,5 +1,5 @@
 (function(){ 
-	var t_conf = angular.module('trucks_configurator', []);
+	var t_conf = angular.module('trucks_configurator', ["checklist-model"]);
 	t_conf.controller('TConfiguratorController', function(){ 
 		this.truck = first_test_truck;
 		this.truck_types = truck_types;
@@ -26,7 +26,12 @@
 		this.selectSeria = function(inSeriaId){
             this.sv_mdl = null;
 			this.seriaId=inSeriaId;
+            $("#iSeriaId").val(inSeriaId);
+            this.setSerVarField();
 		}
+        this.setSerVarField = function(){
+            $("#iSeriaVarId").val(this.sv_mdl);
+        }
 	});
 
 	var truck_series = [
@@ -63,9 +68,11 @@
 			imageUrl:"2.png",
             variants: [
                 {
+                    id: 6,
                     name: "FORWARD 12.0 (FSR90) Полная масса 12 т"
                 },
                 {
+                    id: 7,
                     name: "FORWARD 18.0 (FVR34) Полная масса 18 т"
                 }
             ]
@@ -76,12 +83,15 @@
 			imageUrl:"3.jpg",
             variants: [
                 {
+                    id:8,
                     name: "ISUZU GIGA 6×4 Шасси, полная масса 33 т"
                 },
                 {
+                    id:9,
                     name: "ISUZU GIGA 4×2 Тягач, полная масса 60 т"
                 },
                 {
+                    id:10,
                     name: "ISUZU GIGA 6×4 Тягач, полная масса 60 т"
                 }
 

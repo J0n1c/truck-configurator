@@ -2,7 +2,8 @@
 $(function ()
 {
     jQuery.extend(jQuery.validator.messages, {
-        required: "Обязательное поле"
+        required: "Обязательное поле",
+        email: "Введите корректный e-mail адрес"
     });
     $("#lefthand-nav").affix({
         offset: {
@@ -46,8 +47,13 @@ $(function ()
         bodyTag: "section",
         transitionEffect: "slideLeft",
         onStepChanging: function (event, currentIndex, newIndex)
-        {            
-            return parseInt( $("#iTypeId").val() ) > 0;
+        {
+            if(currentIndex==0){
+                return parseInt( $("#iTypeId").val() ) > 0;
+            }else if(currentIndex==1){
+                return $("#iSeriaVarId").val().length > 0;
+            }
+            return true;
         },
         onFinishing: function (event, currentIndex)
         {
@@ -56,13 +62,13 @@ $(function ()
         },
         onFinished: function (event, currentIndex)
         {
-            alert("Заказ сделан, отменить его невозможно!");
+            alert("Отправляем заказ менеджеру по почте");
         },
         labels: {
             cancel: "Отменить",
             current: "Текущий шаг:",
             pagination: "Страницы",
-            finish: "Закончить",
+            finish: "Заказать расчет",
             next: "Вперед",
             previous: "Назад",
             loading: "Загрузка ..."
